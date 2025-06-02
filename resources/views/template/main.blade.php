@@ -87,7 +87,7 @@
           <li class="nav-item dropdown user-menu">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
               <img
-                src="{{ asset('assets/img/avatar.png') }}"
+                src="{{ asset('assets/img/'. $data['foto']) }}"
                 class="user-image rounded-circle shadow"
                 alt="User Image" />
 
@@ -96,12 +96,11 @@
               <!--begin::User Image-->
               <li class="user-header text-bg-primary">
                 <img
-                  src="{{ asset('assets/img/avatar.png') }}"
+                  src="{{ asset('assets/img/'. $data['foto']) }}"
                   class="rounded-circle shadow"
                   alt="User Image" />
                 <p>
-                  Muhammad Rifky Maulana - Web Developer
-                  <small>Member since Nov. 2023</small>
+                  {{ $data['nama'] }} 
                 </p>
               </li>
               <!--end::User Image-->
