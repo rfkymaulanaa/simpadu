@@ -35,7 +35,7 @@ w
                         <div class="card-header">
                             <h3 class="card-title">Data Mahasiswa</h3>
                             <div class="card-tools">
-                                <a href="tambahmahasiswa.php" class="btn btn-primary">Tambah Mahasiswa</a>
+                                <a href="{{ route('mahasiswa.create') }}" class="btn btn-primary">Tambah Mahasiswa</a>
                             </div>
                         </div>
                         <!-- /.card-header -->
