@@ -9,13 +9,13 @@
             <!--begin::Row-->
             <div class="row">
                 <div class="col-sm-6">
-                    <h3 class="mb-0">Tambah Mahasiswa</h3>
+                    <h3 class="mb-0">Edit Mahasiswa</h3>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-end">
                         <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ url('mahasiswa') }}">Tambah Mahasiswa</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Tambah</li>
+                        <li class="breadcrumb-item"><a href="{{ url('mahasiswa') }}">Edit Mahasiswa</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit</li>
                     </ol>
                 </div>
             </div>
@@ -27,24 +27,19 @@
     <div class="card card-warning card-outline mb-4 mt-4 mx-4 shadow">
         <!--begin::Header-->
         <div class="card-header">
-            <div class="card-title">Tambah Mahasiswa</div>
+            <div class="card-title">Edit Mahasiswa</div>
         </div>
         <!--end::Header-->
         <!--begin::Form-->
-        <form action="{{ url('mahasiswa')  }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('mahasiswa/'.$mahasiswa->nim) }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <!--begin::Body-->
             <div class="card-body">
                 <div class="row mb-3">
                     <label for="nim" class="col-sm-2 col-form-label">Nim</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control @error('nim') is-invalid
-                        @enderror" id="nim" name="nim" value="{{ old('nim') }}"  />
-                        @error('nim')
-                            <div class="invalid-feedback" >
-                                {{ $message }}
-                            </div>
-                        @enderror
+                        <input type="text" class="form-control" id="nim" name="nim" value="{{  $mahasiswa->nim }}" disabled  />
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -63,7 +58,7 @@
                     <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control @error('nama') is-invalid
-                        @enderror" id="nama" name="nama" value="{{ old('nama') }}" />
+                        @enderror" id="nama" name="nama" value="{{ $mahasiswa->nama }}" />
                         @error('nama')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -75,7 +70,7 @@
                     <label for="tanggalLahir" class="col-sm-2 col-form-label">Tanggal Lahir</label>
                     <div class="col-sm-10">
                         <input type="date" class="form-control @error('tanggalLahir') is-invalid
-                        @enderror" id="tanggalLahir" name="tanggalLahir" value="{{ old('tanggalLahir') }}" />
+                        @enderror" id="tanggalLahir" name="tanggalLahir" value="{{  $mahasiswa->tanggalLahir }}" />
                         @error('tanggalLahir')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -87,7 +82,7 @@
                     <label for="telp" class="col-sm-2 col-form-label">No Telp</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control @error('telp') is-invalid
-                        @enderror" id="telp" name="telp" value="{{ old('telp') }}" />
+                        @enderror" id="telp" name="telp" value="{{ $mahasiswa->telp }}" />
                         @error('telp')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -100,7 +95,7 @@
                     <div class="col-sm-10">
                         <input type="email" class="form-control @error('email') is-invalid
                             
-                        @enderror" id="email" name="email" value="{{ old('email') }}" />
+                        @enderror" id="email" name="email" value="{{ $mahasiswa->email }}" />
                         @error('email')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -113,7 +108,8 @@
                     <div class="col-sm-10">
                         <select name="id_prodi" id="id_prodi" class="form-control">
                         @foreach ($prodi as $item )
-                            <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                            <option value= "{{ $item->id }}"
+                                {{ $mahasiswa->id_prodi == $item->id ? 'selected' : '' }}>{{ $item->nama }}</option>
                         @endforeach
                         </select>
                     </div>

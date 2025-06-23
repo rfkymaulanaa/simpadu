@@ -34,7 +34,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="prodi.php" class="nav-link">
+                <a href="{{ url('prodi') }}" class="nav-link">
                   <i class="nav-icon bi bi-briefcase-fill"></i>
                   <p>Program Studi</p>
                 </a>

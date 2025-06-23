@@ -1,7 +1,7 @@
 @extends('template.main')
 
 @section('content')
-w
+
     <main class="app-main">
     <!--begin::App Content Header-->
     <div class="app-content-header">
@@ -35,7 +35,7 @@ w
                         <div class="card-header">
                             <h3 class="card-title">Data Mahasiswa</h3>
                             <div class="card-tools">
-                                <a href="{{ route('mahasiswa.create') }}" class="btn btn-primary">Tambah Mahasiswa</a>
+                                <a href="/mahasiswa/create" class="btn btn-primary">Tambah Mahasiswa</a>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -47,8 +47,7 @@ w
                                         <th>NIM</th>
                                         <th>Nama</th>
                                         <th>Prodi</th>
-                                        <th>No Telp</th>
-                                        <th>Tanggal Lahir</th>
+                                        <th>Foto</th>
                                         <th>Email </th>
                                         <th>Aksi</th>
                                     </tr>
@@ -71,22 +70,19 @@ w
                                                 {{ $m->prodi->nama}}
                                             </td>
                                             <td>
-                                                {{ $m->telp }}
-                                            </td>
-                                            <td>
-                                                {{ $m->tanggalLahir }}
+                                                <img src="{{ asset('storage/'. $m->foto) }}" alt="" width="100">
                                             </td>
                                             <td>
                                                 {{ $m->email }}
                                             </td>
                                             <td>
-                                                <a href="editmahasiswa.php?nim= {{ $m->nim }}" class="btn btn-warning mb-2 mt-2">Edit</a>
+                                                <a href="{{ url('mahasiswa/' . $m->nim . '/edit') }}" class="btn btn-warning mb-2 mt-2">Edit</a>
 
-
-                                                <a href="deletemahasiswa.php?nim= {{ $m->nim }}"
-                                                    onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" class="btn btn-danger mb-2 mt-2">Delete</a>
-
-
+                                                <form action="{{ url('mahasiswa/'. $m->nim) }}" class="d-inline" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"  onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" class="btn btn-danger mb-2 mt-2">Delete</button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
