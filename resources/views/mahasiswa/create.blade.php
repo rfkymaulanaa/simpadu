@@ -14,7 +14,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-end">
                         <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ url('mahasiswa') }}">Tambah Mahasiswa</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url('mahasiswa') }}">Mahasiswa</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Tambah</li>
                     </ol>
                 </div>
@@ -135,7 +135,7 @@
             <!--end::Body-->
             <!--begin::Footer-->
             <div class="card-footer">
-                <button type="submit" value="Simpan" class="btn btn-warning">Simpan</button>
+                <button type="submit" value="Simpan" class="btn btn-primary">Simpan</button>
                 <a href="{{ url('mahasiswa') }}" class="btn btn-danger float-end">Kembali</a>
             </div>
             <!--end::Footer-->

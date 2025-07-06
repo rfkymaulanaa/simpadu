@@ -10,12 +10,12 @@
             <!--begin::Row-->
             <div class="row">
                 <div class="col-sm-6">
-                    <h3 class="mb-0">Mahasiswa</h3>
+                    <h3 class="mb-0">Prodi</h3>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-end">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Mahasiswa</li>
+                        <li class="breadcrumb-item active" aria-current="page">Prodi</li>
                     </ol>
                 </div>
             </div>
@@ -33,9 +33,9 @@
                 <div class="col-md-12">
                     <div class="card mb-4">
                         <div class="card-header">
-                            <h3 class="card-title">Data Mahasiswa</h3>
+                            <h3 class="card-title">Data Prodi</h3>
                             <div class="card-tools">
-                                <a href="/mahasiswa/create" class="btn btn-primary">Tambah Mahasiswa</a>
+                                <a href="{{ url('prodi/create') }}" class="btn btn-primary">Tambah Prodi</a>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -44,41 +44,33 @@
                                 <thead class="thead-light text-center align-middle">
                                     <tr>
                                         <th>No</th>
-                                        <th>NIM</th>
-                                        <th>Nama</th>
-                                        <th>Prodi</th>
-                                        <th>Foto</th>
-                                        <th>Email </th>
+                                        <th>Nama Prodi</th>
+                                        <th>Nama Kaprodi</th>
+                                        <th>Jurusan</th>
                                         <th>Aksi</th>
-                                    </tr>
+                                        
                                 </thead>
                                 <tbody>
 
-                                        @foreach ($mahasiswa as $m )
+                                        @foreach ($prodi as $p )
 
                                         <tr class="align-middle">
                                             <td>
                                                 {{ $loop->iteration }}
                                             </td>
                                             <td>
-                                                {{ $m->nim }}
+                                                {{ $p->nama }}
                                             </td>
                                             <td>
-                                                {{ $m->nama }}
+                                                {{ $p->kaprodi }}
                                             </td>
                                             <td>
-                                                {{ $m->prodi->nama ?? 'Prodi Tidak Ditemukan' }}
+                                                {{ $p->jurusan }}
                                             </td>
                                             <td>
-                                                <img src="{{ asset('storage/images/'. $m->foto) }}" width="100px" alt="Foto Mahasiswa">
-                                            </td>
-                                            <td>
-                                                {{ $m->email }}
-                                            </td>
-                                            <td>
-                                                <a href="{{ url('mahasiswa/' . $m->nim . '/edit') }}" class="btn btn-warning mb-2 mt-2">Edit</a>
+                                                <a href="{{ url('prodi/' . $p->id . '/edit') }}" class="btn btn-warning mb-2 mt-2">Edit</a>
 
-                                                <form action="{{ url('mahasiswa/'. $m->nim) }}" class="d-inline" method="POST">
+                                                <form action="{{ url('prodi/'. $p->id) }}" class="d-inline" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit"  onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" class="btn btn-danger mb-2 mt-2">Delete</button>

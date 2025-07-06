@@ -131,7 +131,7 @@
             <!--end::Body-->
             <!--begin::Footer-->
             <div class="card-footer">
-                <button type="submit" value="Simpan" class="btn btn-warning">Simpan</button>
+                <button type="submit" value="Simpan" class="btn btn-primary">Simpan</button>
                 <a href="{{ url('mahasiswa') }}" class="btn btn-danger float-end">Kembali</a>
             </div>
             <!--end::Footer-->
